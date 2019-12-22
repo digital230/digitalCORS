@@ -1,0 +1,26 @@
+{
+  "name": "digitalrcors",
+  "version": "1.0.0",
+  "description": "send payload to other domain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digital230/digitalCORS.git"
+  },
+  "keywords": [
+    "react",
+    "js",
+    "CORS",
+    "@digital",
+    "@digital230"
+  ],
+  "author": "digital230",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digital230/digitalCORS/issues"
+  },
+  "homepage": "https://github.com/digital230/digitalCORS#readme"
+}
