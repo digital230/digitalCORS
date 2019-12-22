@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/digital230/digitalCORS/issues"
   },
-  "homepage": "https://github.com/digital230/digitalCORS#readme"
+  "homepage": "https://github.com/digital230/digitalCORS#readme",
+  "dependencies": {
+    "is-url": "^1.2.4"
+  }
 }
