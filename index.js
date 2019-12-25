@@ -13,14 +13,27 @@ function sendMessage(config) {
   if (!isUrl(targetPath)) return;
   let originUrl = stripUrl(targetPath);
   console.log(originUrl);
+  if (originUrl !== "") {
+    handleIframeAndToken(config);
+  }
 }
 
-sendMessage({
-  iframParentNode: "test",
-  targetPath:
-    "http://testing.com/book.html?default=<script>alert(document.cookie)</script>",
-  payload: { key: "val" }
-});
+function handleIframeAndToken({ iframParentNode, targetPath, payload, cb }) {
+  let iframe = document.createElement("iframe");
+  iframe.setAttribute("src", targetPath);
+  iframe.setAttribute("id", "iframsrc");
+  iframe.setAttribute("height", "0");
+  iframe.setAttribute("width", "0");
+  let loader = document.querySelector(iframParentNode);
+  loader.appendChild(iframe);
+  iframe.addEventListener("load", function() {
+    if (ifram) {
+      console.log(ifram);
+      iframe.contentWindow.postMessage(JSON.stringify(payload), targetPath);
+      cb && cb();
+    }
+  });
+}
 
 function isvalid(data) {
   if (typeof data === "object") {
@@ -35,3 +48,11 @@ function stripUrl(targetPath) {
   let SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
   return targetPath.replace(SCRIPT_REGEX, "");
 }
+
+// sendMessage({
+//   iframParentNode: "test",
+//   targetPath: "http://testing.com/",
+//   payload: { key: "val" }
+// });
+
+module.exports = sendMessage;
